@@ -12,7 +12,13 @@ import {colors} from '../theme';
 const ChatListScreen = ({navigation: {navigate}}) => {
   return (
     <View style={styles.Container}>
-      <Text>채팅목록이다 이놈아</Text>
+      <View style={styles.Header}>
+        <Text style={styles.Title}>RE:BETTER</Text>
+        <Image
+          style={styles.Mypage}
+          source={require('../Assets/icons/mypage.png')}
+        />
+      </View>
     </View>
   );
 };
@@ -24,5 +30,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingHorizontal: '5%',
+  },
+  Header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: '5%',
+  },
+
+  Title: {
+    fontSize: 36,
+    color: colors.palette.Green,
+    fontFamily: 'Poppins-Bold',
   },
 });

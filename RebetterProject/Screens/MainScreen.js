@@ -11,7 +11,7 @@ import {colors} from '../theme';
 
 const MainScreen = ({navigation: {navigate}}) => {
   const mainBarItems = [
-    {id: 1, text: '판매할 배터리 등록 하기', screen: 'Register'},
+    {id: 1, text: '판매할 배터리 등록하기', screen: 'Register'},
     {id: 2, text: '중고 배터리 거래하기', screen: 'Deal'},
     {id: 3, text: '주변 충전소 & 폐차장 찾기', screen: 'Search'},
   ];
