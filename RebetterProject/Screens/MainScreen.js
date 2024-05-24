@@ -27,7 +27,7 @@ const MainScreen = ({navigation: {navigate}}) => {
       </View>
       <Text style={styles.HelloText}>
         안녕하세요,{'\n'}
-        채영님!
+        Ari님!
       </Text>
       <View style={styles.ImageContainer}>
         <ImageBackground
@@ -36,7 +36,7 @@ const MainScreen = ({navigation: {navigate}}) => {
           resizeMode="cover">
           <Text style={styles.BoxText}>전기차 사용자를 위한 RE:BETTER</Text>
           <Text style={styles.BoxText2}>
-            채영님의 마이카{'\n'}현재 배터리 잔량은 76% 입니다!
+            Ari님의 마이카{'\n'}현재 배터리 잔량은 76% 입니다!
           </Text>
           <TouchableOpacity
             onPress={() => navigate('HomeStack', {screen: 'MyCar'})}>

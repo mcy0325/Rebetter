@@ -20,7 +20,7 @@ const MyCarScreen = ({navigation: {navigate}}) => {
         />
       </View>
       <Text>
-        <Text style={{fontFamily: 'Poppins-Bold', fontSize: 18}}>채영</Text>
+        <Text style={{fontFamily: 'Poppins-Bold', fontSize: 18}}>Ari</Text>
         <Text style={{fontFamily: 'Poppins-Light', fontSize: 18}}>
           {' '}
           님의 마이카 배터리 잔량
@@ -43,7 +43,7 @@ const MyCarScreen = ({navigation: {navigate}}) => {
         </ImageBackground>
       </View>
       <Text>
-        <Text style={{fontFamily: 'Poppins-Bold', fontSize: 16}}>채영</Text>
+        <Text style={{fontFamily: 'Poppins-Bold', fontSize: 16}}>Ari</Text>
         <Text style={{fontFamily: 'Poppins-Light', fontSize: 16}}>
           {' '}
           님의 마이카 배터리 최대 성능(SoH)

@@ -10,11 +10,7 @@ import {
 import {colors} from '../theme';
 
 const SearchScreen = ({navigation: {navigate}}) => {
-  return (
-    <View style={styles.Container}>
-      <Text>찾기다 이놈아</Text>
-    </View>
-  );
+  return <View style={styles.Container}></View>;
 };
 
 export default SearchScreen;

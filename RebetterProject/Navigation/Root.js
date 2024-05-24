@@ -9,9 +9,7 @@ import BoardStack from './BoardStack';
 const Nav = createNativeStackNavigator();
 
 const Root = () => (
-  <Nav.Navigator
-    initialRouteName="MainStack"
-    screenOptions={{headerShown: false}}>
+  <Nav.Navigator initialRouteName="Tabs" screenOptions={{headerShown: false}}>
     <Nav.Screen name="Tabs" component={Tabs} />
     <Nav.Screen name="MainStack" component={MainStack} />
     <Nav.Screen name="HomeStack" component={HomeStack} />
