@@ -1,14 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  FlatList,
-  Image,
-  ScrollView,
-  ImageBackground,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput, FlatList, Image} from 'react-native';
 import {colors} from '../theme';
 
 const dummyPosts = [
@@ -47,6 +38,10 @@ const dummyPosts = [
 const BoardScreen = ({navigation: {navigate}}) => {
   const [searchQuery, setSearchQuery] = useState('');
 
+  const filteredPosts = dummyPosts.filter(post =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <View style={styles.Container}>
       <View style={styles.Header}>
@@ -63,7 +58,7 @@ const BoardScreen = ({navigation: {navigate}}) => {
         onChangeText={setSearchQuery}
       />
       <FlatList
-        data={dummyPosts}
+        data={filteredPosts}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.flatListContentContainer}
         renderItem={({item}) => (

@@ -7,11 +7,14 @@ import {
   Image,
   FlatList,
   TextInput,
+  Modal,
 } from 'react-native';
 import {colors} from '../theme';
 
 const DealScreen = ({navigation: {navigate}}) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedDeal, setSelectedDeal] = useState(null);
 
   const dealData = [
     {
@@ -26,6 +29,19 @@ const DealScreen = ({navigation: {navigate}}) => {
     },
   ];
 
+  const filteredData = dealData.filter(post =>
+    post.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const handleOpenModal = deal => {
+    setSelectedDeal(deal);
+    setModalVisible(true);
+  };
+
+  const handleChat = async () => {
+    navigate('ChatStack', {screen: 'Chat'});
+  };
+
   const renderItem = ({item}) => (
     <TouchableOpacity style={styles.chatItem}>
       <View style={styles.itemLeft}>
@@ -33,10 +49,12 @@ const DealScreen = ({navigation: {navigate}}) => {
         <Text style={styles.Message}>{item.Message}</Text>
       </View>
       <View style={styles.itemRight}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleOpenModal(item)}>
           <Text style={styles.buttonText}>상세 정보</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleChat}>
           <Text style={styles.buttonText}>채팅하기</Text>
         </TouchableOpacity>
       </View>
@@ -54,16 +72,36 @@ const DealScreen = ({navigation: {navigate}}) => {
       </View>
       <TextInput
         style={styles.searchInput}
-        placeholder="중고 배터리 검색"
+        placeholder="차 종으로 검색"
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
       <FlatList
-        data={dealData}
+        data={filteredData}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.chatList}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={() => {
+          setModalVisible(!isModalVisible);
+        }}>
+        <View style={styles.modalView}>
+          <Text style={styles.modalText}>차 종: {selectedDeal?.name}</Text>
+          <Text style={styles.modalText}>배터리 규격: </Text>
+          <Text style={styles.modalText}>배터리 성능: </Text>
+          <Text style={styles.modalText}>배터리 가격: </Text>
+
+          <TouchableOpacity
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setModalVisible(!isModalVisible)}>
+            <Text style={styles.buttonText}>닫기</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -140,5 +178,31 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontFamily: 'Poppins-Regular',
+  },
+  modalView: {
+    margin: 30,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    fontFamily: 'Poppins-Light',
+    textAlign: 'center',
+  },
+  buttonClose: {
+    marginTop: 10,
+    width: '20%',
+    backgroundColor: colors.palette.Green,
+    alignItems: 'center',
   },
 });
