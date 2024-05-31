@@ -20,12 +20,12 @@ const DealScreen = ({navigation: {navigate}}) => {
     {
       id: '1',
       name: '현대자동차 G80',
-      Message: 'Loppy | 2024. 04. 16.',
+      Message: '담당자: Loopy',
     },
     {
       id: '2',
       name: 'KIA EV6',
-      Message: 'Ryctim | 2024. 03. 25.',
+      Message: '담당자: Ryctim',
     },
   ];
 
@@ -91,9 +91,10 @@ const DealScreen = ({navigation: {navigate}}) => {
         }}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>차 종: {selectedDeal?.name}</Text>
-          <Text style={styles.modalText}>배터리 규격: </Text>
-          <Text style={styles.modalText}>배터리 성능: </Text>
-          <Text style={styles.modalText}>배터리 가격: </Text>
+          <Text style={styles.modalText}>배터리 규격: ??? </Text>
+          <Text style={styles.modalText}>배터리 성능: ??? </Text>
+          <Text style={styles.modalText}>배터리 가격: ??? </Text>
+          <Text style={styles.modalText}>거래소: ???폐차장 </Text>
 
           <TouchableOpacity
             style={[styles.button, styles.buttonClose]}

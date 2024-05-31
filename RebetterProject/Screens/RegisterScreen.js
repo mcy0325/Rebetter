@@ -36,7 +36,7 @@ const RegisterScreen = ({navigation: {navigate}}) => {
         <TextInput style={styles.Input} />
       </View>
       <View>
-        <Text style={styles.Font}>배터리 가격</Text>
+        <Text style={styles.Font}>주거 지역</Text>
         <TextInput style={styles.Input} />
       </View>
       <View>
