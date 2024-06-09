@@ -13,9 +13,7 @@ import {
 } from '@mj-studio/react-native-naver-map';
 import {colors} from '../theme';
 import axios from 'axios';
-
-const CLIENT_ID = 'ei8ubth3k8';
-const CLIENT_SECRET = 'Wj9j6vKCVRstYCPPa7XcybKrddfX2tsnPRU5mOCW';
+import {API_URL, CLIENT_ID, CLIENT_SECRET} from '@env';
 
 const SearchScreen = ({navigation: {navigate}}) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,18 +26,15 @@ const SearchScreen = ({navigation: {navigate}}) => {
 
   const searchLocation = async () => {
     try {
-      const response = await axios.get(
-        'https://naveropenapi.apigw.gov-ntruss.com/map-geocode/v2/geocode',
-        {
-          params: {
-            query: searchQuery,
-          },
-          headers: {
-            'X-NCP-APIGW-API-KEY-ID': CLIENT_ID,
-            'X-NCP-APIGW-API-KEY': CLIENT_SECRET,
-          },
+      const response = await axios.get(API_URL, {
+        params: {
+          query: searchQuery,
         },
-      );
+        headers: {
+          'X-NCP-APIGW-API-KEY-ID': CLIENT_ID,
+          'X-NCP-APIGW-API-KEY': CLIENT_SECRET,
+        },
+      });
 
       const locations = response.data.addresses.map(address => ({
         name: address.roadAddress,
